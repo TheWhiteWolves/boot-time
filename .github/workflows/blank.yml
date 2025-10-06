@@ -18,17 +18,16 @@ jobs:
     steps:
       - name: "📥  Fetching Repository Contents"
         uses: actions/checkout@main
-      
+
       - name: "🕒  Get Current Time"
-        uses: gerred/actions/current-time@master
-        id: current-time
-        
+        run: echo "TIME=$(date +'%T')" >> $GITHUB_ENV
+    
       # Runs a set of commands using the runners shell
       - name: Update README.md
         env:
           TIME: "${{ steps.current-time.outputs.time }}"
         run: |
-          sed -i $TIME README.md
+          echo $TIME >> README.md
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
           git commit -am "Automated report"
