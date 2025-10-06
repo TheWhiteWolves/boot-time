@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@main
 
       - name: "🕒  Get Current Time"
-        run: echo "TIME=$(date +'%T')" >> $GITHUB_ENV
+        run: echo "TIME=$(date +%s)" >> $GITHUB_ENV
     
       # Runs a set of commands using the runners shell
       - name: Update README.md
